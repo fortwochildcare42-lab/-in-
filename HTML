@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -13,213 +13,152 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:              #F4F3EF;
-      --bg2:             #ECEAE4;
-      --surface:         #FFFFFF;
-      --surface2:        #F0EEE9;
-      --border:          rgba(0,0,0,0.07);
-      --border-med:      rgba(0,0,0,0.11);
-      --border-strong:   rgba(0,0,0,0.18);
-      --text-primary:    #18170F;
-      --text-secondary:  #6B6960;
-      --text-muted:      #A8A69E;
-
-      /* タイプカラー */
-      --income:          #1A6B44;
-      --income-mid:      #2D9963;
-      --income-bg:       #E6F4EE;
-      --income-border:   #B3DFC8;
-
-      --work:            #7C4010;
-      --work-mid:        #C06820;
-      --work-bg:         #FBF0E3;
-      --work-border:     #F0C898;
-
-      --private:         #1A3F7A;
-      --private-mid:     #2E65C4;
-      --private-bg:      #E4EEF9;
-      --private-border:  #A8C8F0;
-
-      --danger:          #B03020;
-      --danger-bg:       #FDECEA;
-
-      --radius-xs: 6px;
-      --radius-sm: 10px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --radius-xl: 26px;
-
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+      --bg: #F5F4F0;
+      --surface: #FFFFFF;
+      --surface2: #EFEFEA;
+      --border: rgba(0,0,0,0.08);
+      --border-strong: rgba(0,0,0,0.14);
+      --text-primary: #1A1916;
+      --text-secondary: #6B6A65;
+      --text-muted: #A09F9A;
+      --income: #1D6E47;
+      --income-bg: #E8F5EE;
+      --work: #8A4F10;
+      --work-bg: #FBF0E3;
+      --private: #1A4A7A;
+      --private-bg: #E3EEF9;
+      --danger: #B53A2A;
+      --accent: #1A1916;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
     }
 
-    html, body {
-      width: 100%;
-      overflow-x: hidden;
-    }
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text-primary);
       min-height: 100vh;
-      min-height: 100dvh;
       -webkit-tap-highlight-color: transparent;
       -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    /* ═══ LAYOUT ═══════════════════════════════════════════ */
-    .app {
-      width: 100%;
-      max-width: 480px;
-      min-height: 100vh;
-      min-height: 100dvh;
-      padding-bottom: max(32px, env(safe-area-inset-bottom));
-      position: relative;
-      overflow-x: hidden;
-    }
+    .app { max-width: 480px; margin: 0 auto; padding: 0 0 100px; }
 
-    /* ═══ HEADER ════════════════════════════════════════════ */
+    /* ── Header ── */
     .header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 14px 18px 12px;
+      padding: 16px 20px 12px;
       position: sticky;
       top: 0;
-      z-index: 20;
-      width: 100%;
-      padding-top: max(14px, env(safe-area-inset-top));
+      z-index: 10;
     }
-    .header-top {
+    .header-title-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 10px;
     }
     .header-title {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
-    .settings-btn {
-      width: 30px; height: 30px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 50%;
+    .gear-btn {
+      width: 28px; height: 28px;
+      background: none;
+      border: none;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      color: var(--text-secondary);
-      font-size: 14px;
-      transition: background 0.15s;
-      flex-shrink: 0;
+      color: var(--text-muted);
+      font-size: 16px;
+      border-radius: 50%;
+      transition: background 0.15s, color 0.15s;
+      padding: 0;
     }
-    .settings-btn:active { background: var(--bg2); }
+    .gear-btn:active, .gear-btn:hover { background: var(--surface2); color: var(--text-primary); }
     .month-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .month-nav-btn {
-      width: 34px; height: 34px;
+      width: 32px; height: 32px;
       background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 50%;
+      border: none; border-radius: 50%;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       color: var(--text-secondary);
-      font-size: 13px;
+      font-size: 14px;
       transition: background 0.15s;
     }
-    .month-nav-btn:active { background: var(--bg2); }
+    .month-nav-btn:active { background: var(--border-strong); }
     .month-label {
       font-family: 'DM Mono', monospace;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 500;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: var(--text-primary);
     }
-    .month-label span { color: var(--text-muted); font-size: 16px; }
+    .month-label span { color: var(--text-muted); font-size: 14px; }
 
-    /* ═══ SUMMARY ═══════════════════════════════════════════ */
-    .summary-section { padding: 14px 14px 0; }
-
+    /* ── Summary Cards ── */
+    .summary-section { padding: 16px 16px 0; }
     .balance-card {
-      background: var(--text-primary);
+      background: var(--accent);
       color: #fff;
       border-radius: var(--radius-xl);
-      padding: 18px 20px;
+      padding: 20px 22px;
       margin-bottom: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-    .balance-card::before {
-      content: '';
-      position: absolute;
-      right: -20px; top: -20px;
-      width: 100px; height: 100px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .balance-card.negative { background: var(--danger); }
-    .balance-inner { display: flex; align-items: flex-end; justify-content: space-between; }
-    .balance-left {}
-    .balance-label { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.55; margin-bottom: 3px; }
-    .balance-amount { font-family: 'DM Mono', monospace; font-size: 32px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
-    .balance-status { font-size: 11px; opacity: 0.5; margin-top: 4px; font-weight: 500; }
-    .balance-badge {
+    .balance-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 4px; }
+    .balance-amount { font-family: 'DM Mono', monospace; font-size: 28px; font-weight: 500; letter-spacing: -0.02em; }
+    .balance-sub { font-size: 10px; opacity: 0.5; margin-top: 2px; }
+    .balance-pill {
       background: rgba(255,255,255,0.15);
       border-radius: 100px;
-      padding: 5px 12px;
+      padding: 4px 10px;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
     }
-
-    .sub-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .sub-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
     .sub-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 11px 10px;
+      padding: 12px 10px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-    .sub-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-    }
-    .sub-card.income::before  { background: var(--income-mid); }
-    .sub-card.work::before    { background: var(--work-mid); }
-    .sub-card.private::before { background: var(--private-mid); }
+    .sub-card-label { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+    .sub-card-amount { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
+    .sub-card.income .sub-card-label { color: var(--income); }
+    .sub-card.income .sub-card-amount { color: var(--income); }
+    .sub-card.work .sub-card-label { color: var(--work); }
+    .sub-card.work .sub-card-amount { color: var(--work); }
+    .sub-card.private .sub-card-label { color: var(--private); }
+    .sub-card.private .sub-card-amount { color: var(--private); }
 
-    .sub-card-label { font-size: 8px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
-    .sub-card-amount { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; }
-    .sub-card.income  .sub-card-label, .sub-card.income  .sub-card-amount { color: var(--income); }
-    .sub-card.work    .sub-card-label, .sub-card.work    .sub-card-amount { color: var(--work); }
-    .sub-card.private .sub-card-label, .sub-card.private .sub-card-amount { color: var(--private); }
-
-    /* ═══ TAB NAV ════════════════════════════════════════════ */
+    /* ── Tab Nav ── */
     .tab-nav {
       display: flex;
-      padding: 0 14px;
-      gap: 4px;
+      padding: 0 16px;
+      gap: 6px;
+      margin-bottom: 0;
       border-bottom: 1px solid var(--border);
       background: var(--surface);
-      width: 100%;
     }
     .tab-btn {
-      padding: 11px 14px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.1em;
+      padding: 10px 14px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       background: none; border: none;
       cursor: pointer;
@@ -229,64 +168,22 @@
       transition: color 0.15s;
     }
     .tab-btn.active { color: var(--text-primary); border-bottom-color: var(--text-primary); }
-    .tab-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--text-primary);
-      color: white;
-      border-radius: 100px;
-      font-size: 8px;
-      padding: 1px 5px;
-      margin-left: 5px;
-      font-weight: 700;
-      vertical-align: 1px;
-    }
 
-    /* ═══ FILTER BAR ════════════════════════════════════════ */
-    .filter-bar {
-      display: flex;
-      gap: 6px;
-      padding: 10px 14px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .filter-bar::-webkit-scrollbar { display: none; }
-    .filter-chip {
-      flex-shrink: 0;
-      padding: 5px 11px;
-      border-radius: 100px;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 0.06em;
-      border: 1px solid var(--border-med);
-      background: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .filter-chip.active-all     { background: var(--text-primary); color: white; border-color: var(--text-primary); }
-    .filter-chip.active-income  { background: var(--income-bg);  color: var(--income);  border-color: var(--income-border); }
-    .filter-chip.active-work    { background: var(--work-bg);    color: var(--work);    border-color: var(--work-border); }
-    .filter-chip.active-private { background: var(--private-bg); color: var(--private); border-color: var(--private-border); }
-
-    /* ═══ ENTRY FORM ════════════════════════════════════════ */
-    .form-section { padding: 14px; }
+    /* ── Entry Form ── */
+    .form-section { padding: 16px; }
     .form-card {
       background: var(--surface);
       border-radius: var(--radius-xl);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
       overflow: hidden;
     }
-
-    /* type tabs */
-    .type-tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .type-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
     .type-tab {
-      padding: 13px 6px;
+      padding: 12px 8px;
       text-align: center;
       font-size: 10px; font-weight: 700;
       letter-spacing: 0.08em;
@@ -294,704 +191,496 @@
       border: none; background: none; cursor: pointer;
       color: var(--text-muted);
       border-bottom: 2px solid transparent;
-      transition: all 0.18s;
-      position: relative;
+      transition: all 0.15s;
     }
-    .type-tab .type-tab-icon { display: block; font-size: 16px; margin-bottom: 3px; }
     .type-tab.active-private { color: var(--private); border-bottom-color: var(--private); background: var(--private-bg); }
     .type-tab.active-work    { color: var(--work);    border-bottom-color: var(--work);    background: var(--work-bg); }
     .type-tab.active-income  { color: var(--income);  border-bottom-color: var(--income);  background: var(--income-bg); }
 
     .form-body { padding: 16px; }
-    .form-row { margin-bottom: 13px; }
+    .form-row { margin-bottom: 10px; }
     .form-row label {
       display: block;
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-
-    /* text/date inputs */
-    .form-input {
-      width: 100%; padding: 10px 13px;
+    .form-input, .form-select {
+      width: 100%; padding: 10px 12px;
       background: var(--bg);
-      border: 1px solid var(--border-med);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       font-family: 'DM Sans', sans-serif;
-      font-size: 15px; font-weight: 400;
+      font-size: 14px; font-weight: 500;
       color: var(--text-primary);
       outline: none;
-      transition: border-color 0.15s, background 0.15s;
-      text-align: left;
-      -webkit-appearance: none;
       appearance: none;
-      display: block;
+      transition: border-color 0.15s;
     }
-    .form-input[type="date"] {
-      text-align: left;
-      -webkit-text-align: left;
-      color: var(--text-primary);
+    .form-input:focus, .form-select:focus { border-color: var(--border-strong); background: var(--surface); }
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '▾';
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: 11px; pointer-events: none;
     }
-    /* カスタム日付セレクター */
-    .date-selectors {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 6px;
-    }
-    .date-select {
-      padding: 10px 8px;
-      background: var(--bg);
-      border: 1px solid var(--border-med);
-      border-radius: var(--radius-sm);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px; font-weight: 400;
-      color: var(--text-primary);
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      text-align: left;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A8A69E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 26px;
-    }
-    .date-select:focus { border-color: var(--border-strong); background-color: var(--surface); }
-    .form-input:focus { border-color: var(--border-strong); background: var(--surface); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-    /* ── tag chip selector ───────────────────────────────── */
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .tag-chip {
-      padding: 5px 12px;
-      border-radius: 100px;
-      font-size: 11px; font-weight: 600;
-      border: 1px solid var(--border-med);
-      background: var(--bg);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.12s;
-      white-space: nowrap;
-    }
-    .tag-chip:active { transform: scale(0.96); }
-    .tag-chip.selected-private { background: var(--private-bg); color: var(--private); border-color: var(--private-border); }
-    .tag-chip.selected-work    { background: var(--work-bg);    color: var(--work);    border-color: var(--work-border); }
-    .tag-chip.selected-income  { background: var(--income-bg);  color: var(--income);  border-color: var(--income-border); }
-
-    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 13px; }
-
-    /* ── amount area ─────────────────────────────────────── */
+    /* ── Amount ── */
     .amount-area {
       background: var(--bg);
-      border: 1px solid var(--border-med);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
-      margin-bottom: 13px;
-    }
-    .amount-display {
-      display: flex; align-items: baseline; gap: 5px;
+      padding: 12px 16px;
       margin-bottom: 10px;
     }
-    .amount-currency { font-size: 20px; color: var(--text-muted); font-weight: 400; }
+    .amount-display {
+      display: flex; align-items: baseline; gap: 6px;
+      margin-bottom: 8px;
+    }
+    .amount-currency { font-size: 18px; color: var(--text-muted); font-weight: 500; }
     .amount-input {
       font-family: 'DM Mono', monospace;
-      font-size: 38px; font-weight: 500;
+      font-size: 36px; font-weight: 500;
       border: none; background: transparent;
       outline: none; width: 100%;
       color: var(--text-primary);
-      letter-spacing: -0.02em;
     }
-    .amount-input::placeholder { color: var(--text-muted); }
-
-    /* numpad */
-    .numpad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
-    .np-btn {
-      padding: 12px 4px;
+    .calc-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+    .calc-btn {
+      padding: 8px 4px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      font-family: 'DM Mono', monospace;
-      font-size: 16px; font-weight: 500;
-      color: var(--text-primary);
+      font-size: 12px; font-weight: 700;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: background 0.1s;
-      text-align: center;
     }
-    .np-btn:active { background: var(--surface2); }
-    .np-btn.np-op  { color: var(--text-secondary); font-size: 13px; }
-    .np-btn.np-eq  { background: var(--text-primary); color: white; border-color: var(--text-primary); font-size: 14px; }
-    .np-btn.np-del { color: var(--danger); font-size: 17px; }
-    .np-btn.np-zero { grid-column: span 1; }
+    .calc-btn:active { background: var(--surface2); }
+    .calc-btn.calc-eq { background: var(--text-primary); color: white; border-color: var(--text-primary); }
 
-    /* ── action buttons ─────────────────────────────────── */
     .save-btn {
-      width: 100%; padding: 15px;
+      width: 100%; padding: 14px;
       background: var(--text-primary);
       color: white;
       border: none; border-radius: var(--radius-md);
       font-family: 'DM Sans', sans-serif;
       font-size: 13px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      letter-spacing: 0.08em; text-transform: uppercase;
       cursor: pointer;
       transition: opacity 0.15s;
     }
     .save-btn:active { opacity: 0.8; }
-    .save-btn.editing { background: var(--private-mid); }
-    .save-btn.income  { background: var(--income-mid); }
-    .save-btn.work    { background: var(--work-mid); }
+    .save-btn.editing { background: #2855A0; }
     .cancel-btn {
-      width: 100%; padding: 11px;
-      background: none; border: 1px solid var(--border-med);
+      width: 100%; padding: 10px;
+      background: none; border: 1px solid var(--border);
       border-radius: var(--radius-md);
       font-family: 'DM Sans', sans-serif;
       font-size: 12px; font-weight: 700;
       color: var(--text-secondary); cursor: pointer;
-      margin-top: 7px;
+      margin-top: 6px;
     }
 
-    /* ═══ HISTORY ════════════════════════════════════════════ */
-    .history-section { padding: 0 14px; padding-top: 12px; }
+    /* ── History ── */
+    .history-section { padding: 0 16px; }
     .date-group { margin-bottom: 6px; }
     .date-header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 6px 2px 5px;
+      padding: 8px 2px 6px;
     }
-    .date-header-left { display: flex; align-items: center; gap: 7px; }
-    .date-header-day {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; font-weight: 500;
-      color: var(--text-secondary);
-    }
-    .date-weekday {
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: var(--surface2);
-      color: var(--text-muted);
-    }
-    .date-weekday.sat { background: #E3EEF9; color: var(--private); }
-    .date-weekday.sun { background: #FDECEA; color: var(--danger); }
-    .date-header-total { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); }
+    .date-header-label { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+    .date-header-total { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); }
 
     .tx-item {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       margin-bottom: 5px;
-      display: flex; align-items: stretch;
+      display: flex; align-items: center;
       overflow: hidden;
       cursor: pointer;
-      transition: background 0.1s, border-color 0.1s;
+      transition: background 0.1s;
     }
     .tx-item:active { background: var(--surface2); }
-
-    .tx-stripe { width: 4px; flex-shrink: 0; }
-    .tx-stripe.income  { background: var(--income-mid); }
-    .tx-stripe.work    { background: var(--work-mid); }
-    .tx-stripe.private { background: var(--private-mid); }
-
-    .tx-body { flex: 1; padding: 9px 12px; min-width: 0; }
-    .tx-top  { display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
-    .tx-badge {
-      font-size: 8px; font-weight: 700; letter-spacing: 0.06em;
-      padding: 2px 6px; border-radius: 4px;
-      white-space: nowrap; flex-shrink: 0;
-    }
-    .tx-badge.income  { background: var(--income-bg);  color: var(--income); }
-    .tx-badge.work    { background: var(--work-bg);    color: var(--work); }
-    .tx-badge.private { background: var(--private-bg); color: var(--private); }
-
-    .tx-cat  { font-size: 10px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tx-stripe { width: 4px; align-self: stretch; flex-shrink: 0; }
+    .tx-stripe.income  { background: var(--income); }
+    .tx-stripe.work    { background: #D47B20; }
+    .tx-stripe.private { background: #3476C7; }
+    .tx-body { flex: 1; padding: 10px 12px; min-width: 0; }
+    .tx-meta { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
     .tx-name { font-size: 14px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .tx-method { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
-
-    .tx-right { display: flex; align-items: center; gap: 4px; padding: 0 8px; flex-shrink: 0; }
+    .tx-right { display: flex; align-items: center; gap: 6px; padding-right: 6px; }
     .tx-amount { font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 500; white-space: nowrap; }
     .tx-amount.income  { color: var(--income); }
     .tx-amount.expense { color: var(--text-primary); }
-
     .tx-delete {
-      width: 28px; height: 28px;
+      width: 30px; height: 30px;
       background: none; border: none;
       color: var(--text-muted);
-      font-size: 17px; cursor: pointer;
+      font-size: 18px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
     }
-    .tx-delete:active { background: var(--danger-bg); color: var(--danger); }
+    .tx-delete:active { background: #FEE2E2; color: var(--danger); }
 
-    .empty-state { text-align: center; padding: 56px 20px; color: var(--text-muted); }
-    .empty-state-icon { font-size: 36px; margin-bottom: 10px; }
-    .empty-state p { font-size: 13px; }
+    .empty-state { text-align: center; padding: 48px 20px; color: var(--text-muted); }
+    .empty-state p { font-size: 13px; margin-top: 8px; }
 
-    /* ═══ LOADING ════════════════════════════════════════════ */
+    /* ── Loading ── */
     .loading-overlay {
-      position: fixed;
-      top: 0; bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 480px;
-      background: rgba(244,243,239,0.88);
-      backdrop-filter: blur(6px);
+      position: fixed; inset: 0;
+      background: rgba(245,244,240,0.85);
+      backdrop-filter: blur(4px);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      z-index: 200; gap: 12px;
+      z-index: 100; gap: 12px;
     }
     .spinner {
-      width: 26px; height: 26px;
-      border: 2.5px solid var(--border-strong);
+      width: 28px; height: 28px;
+      border: 3px solid var(--border-strong);
       border-top-color: var(--text-primary);
       border-radius: 50%;
-      animation: spin 0.65s linear infinite;
+      animation: spin 0.7s linear infinite;
     }
-    .loading-text { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); }
+    .loading-text { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ═══ SETTINGS MODAL ════════════════════════════════════ */
+    /* ── Settings Modal ── */
     .modal-backdrop {
       position: fixed; inset: 0;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(4px);
-      z-index: 100;
-      animation: fadeIn 0.2s ease;
+      background: rgba(0,0,0,0.35);
+      z-index: 50;
+      display: flex; align-items: flex-end; justify-content: center;
     }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     .modal-sheet {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 480px;
       background: var(--surface);
       border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      z-index: 101;
-      max-height: 90dvh;
+      width: 100%; max-width: 480px;
+      max-height: 82vh;
       display: flex; flex-direction: column;
-      animation: slideUp 0.28s cubic-bezier(0.32, 0.72, 0, 1);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
+      overflow: hidden;
+      animation: slideUp 0.22s ease;
     }
-    @keyframes slideUp { from { transform: translateX(-50%) translateY(100%); } to { transform: translateX(-50%) translateY(0); } }
-
-    .modal-handle {
-      width: 36px; height: 4px;
-      background: var(--border-strong);
-      border-radius: 2px;
-      margin: 12px auto 0;
+    @keyframes slideUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
     }
     .modal-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px 12px;
+      padding: 18px 20px 14px;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
     }
-    .modal-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+    .modal-title {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-primary);
+    }
     .modal-close {
       width: 28px; height: 28px;
-      background: var(--surface2);
-      border: none; border-radius: 50%;
-      cursor: pointer;
-      font-size: 14px; color: var(--text-secondary);
+      background: var(--surface2); border: none; border-radius: 50%;
+      font-size: 14px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary);
     }
+    .modal-close:active { background: var(--border-strong); }
+    .modal-body { overflow-y: auto; padding: 16px 20px 32px; flex: 1; }
 
-    .modal-body { flex: 1; overflow-y: auto; padding: 16px 20px; -webkit-overflow-scrolling: touch; }
-
-    /* settings section tabs */
-    .settings-seg {
-      display: flex;
-      background: var(--surface2);
-      border-radius: var(--radius-sm);
-      padding: 3px;
-      margin-bottom: 18px;
-      gap: 2px;
+    .settings-type-tabs {
+      display: flex; gap: 6px;
+      margin-bottom: 16px;
     }
-    .settings-seg-btn {
-      flex: 1;
-      padding: 7px 4px;
-      border: none;
-      border-radius: var(--radius-xs);
-      background: none;
+    .settings-type-tab {
+      flex: 1; padding: 8px 4px;
       font-size: 10px; font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer;
       color: var(--text-muted);
-      cursor: pointer;
       transition: all 0.15s;
     }
-    .settings-seg-btn.active { background: var(--surface); color: var(--text-primary); box-shadow: var(--shadow-sm); }
+    .settings-type-tab.active-private { background: var(--private-bg); color: var(--private); border-color: var(--private); }
+    .settings-type-tab.active-work    { background: var(--work-bg);    color: var(--work);    border-color: var(--work); }
+    .settings-type-tab.active-income  { background: var(--income-bg);  color: var(--income);  border-color: var(--income); }
 
+    .settings-group { margin-bottom: 18px; }
     .settings-group-label {
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 8px;
     }
-
-    /* tag list in settings */
-    .settings-tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-      min-height: 32px;
-    }
-    .settings-tag {
-      display: flex; align-items: center; gap: 5px;
-      padding: 5px 10px;
-      border-radius: 100px;
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .tag-chip {
+      display: inline-flex; align-items: center; gap: 4px;
       background: var(--surface2);
-      border: 1px solid var(--border-med);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 10px 4px 12px;
       font-size: 12px; font-weight: 500;
       color: var(--text-primary);
     }
-    .settings-tag-del {
-      background: none; border: none; cursor: pointer;
-      color: var(--text-muted); font-size: 13px;
-      padding: 0; line-height: 1;
+    .tag-chip-del {
+      background: none; border: none;
+      color: var(--text-muted);
+      font-size: 13px; cursor: pointer;
+      line-height: 1; padding: 0;
       display: flex; align-items: center;
     }
-    .settings-tag-del:active { color: var(--danger); }
-
-    .settings-add-row {
-      display: flex; gap: 7px; margin-bottom: 20px;
+    .tag-chip-del:active { color: var(--danger); }
+    .tag-add-row {
+      display: flex; gap: 6px; align-items: stretch;
     }
-    .settings-add-input {
-      flex: 1; padding: 8px 12px;
+    .tag-add-input {
+      flex: 1; padding: 8px 10px;
       background: var(--bg);
-      border: 1px solid var(--border-med);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
+      font-size: 13px; font-weight: 500;
       color: var(--text-primary);
       outline: none;
     }
-    .settings-add-input:focus { border-color: var(--border-strong); }
-    .settings-add-btn {
+    .tag-add-input:focus { border-color: var(--border-strong); background: var(--surface); }
+    .tag-add-submit {
       padding: 8px 14px;
       background: var(--text-primary);
       color: white;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 12px; font-weight: 700;
+      border: none; border-radius: var(--radius-sm);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
       cursor: pointer;
-    }
-
-    .modal-footer {
-      padding: 12px 20px 24px;
-      border-top: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .save-settings-btn {
-      width: 100%; padding: 14px;
-      background: var(--text-primary);
-      color: white;
-      border: none; border-radius: var(--radius-md);
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-    .save-settings-btn:active { opacity: 0.8; }
-
-    /* ── freee export note ───────────────────────────────── */
-    .freee-note {
-      background: var(--work-bg);
-      border: 1px solid var(--work-border);
-      border-radius: var(--radius-sm);
-      padding: 10px 13px;
-      font-size: 11px;
-      color: var(--work);
-      margin-bottom: 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .freee-note-icon { font-size: 14px; flex-shrink: 0; }
-
-    /* ── toast ───────────────────────────────────────────── */
-    .toast {
-      position: fixed;
-      bottom: max(30px, env(safe-area-inset-bottom, 30px));
-      left: 50%;
-      transform: translateX(-50%) translateY(0);
-      background: var(--text-primary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 100px;
-      font-size: 12px; font-weight: 600;
-      z-index: 300;
       white-space: nowrap;
-      animation: toastIn 0.25s ease, toastOut 0.25s ease 1.8s forwards;
-      box-shadow: var(--shadow-md);
     }
-    @keyframes toastIn  { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-    @keyframes toastOut { to   { opacity: 0; transform: translateX(-50%) translateY(10px); } }
+    .tag-add-submit:active { opacity: 0.8; }
+    .tag-add-submit:disabled { opacity: 0.4; cursor: default; }
+    .settings-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 14px 0;
+    }
   </style>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const { useState, useEffect, useRef, useCallback } = React;
+    const { useState, useEffect, useRef } = React;
+    const fmt   = n => Number(n).toLocaleString('ja-JP');
+    const TODAY = new Date().toISOString().split('T')[0];
 
-    // ── utils ──────────────────────────────────────────────
-    const fmt   = n  => Number(n).toLocaleString('ja-JP');
-    const getToday = () => new Date().toISOString().split('T')[0];
-
-    // タイプ設定
     const TYPE_CONFIG = {
-      '支出（プライベート）': {
-        label: 'Private', icon: '🏠',
-        tabClass: 'active-private', stripe: 'private',
-        catKey: 'HOME_cat', methodKey: 'HOME_method',
-        btnClass: ''
-      },
-      '支出（For Two）': {
-        label: 'For Two', icon: '💼',
-        tabClass: 'active-work', stripe: 'work',
-        catKey: 'WORK_cat', methodKey: 'WORK_method',
-        btnClass: 'work'
-      },
-      '収入': {
-        label: 'Income', icon: '💰',
-        tabClass: 'active-income', stripe: 'income',
-        catKey: 'INCOME_cat', methodKey: 'INCOME_method',
-        btnClass: 'income'
-      }
+      '支出（プライベート）': { label: 'Private', tabClass: 'active-private', stripe: 'private', catKey: 'HOME_cat', methodKey: 'HOME_method' },
+      '支出（For Two）':     { label: 'For Two',  tabClass: 'active-work',    stripe: 'work',    catKey: 'WORK_cat',   methodKey: 'WORK_method' },
+      '収入':                 { label: 'Income',   tabClass: 'active-income',  stripe: 'income',  catKey: 'INCOME_cat', methodKey: 'INCOME_method' }
     };
     const TYPES = Object.keys(TYPE_CONFIG);
 
-    // 設定カラム定義
-    const SETTINGS_SECTIONS = [
-      { key: 'home',   label: 'Private', color: 'private',
-        items: [
-          { id: 'HOME_cat',    label: 'カテゴリ' },
-          { id: 'HOME_method', label: '支払方法' }
-        ]
-      },
-      { key: 'work',   label: 'For Two', color: 'work',
-        items: [
-          { id: 'WORK_cat',    label: 'カテゴリ' },
-          { id: 'WORK_method', label: '支払方法' }
-        ]
-      },
-      { key: 'income', label: 'Income',  color: 'income',
-        items: [
-          { id: 'INCOME_cat',    label: 'カテゴリ' },
-          { id: 'INCOME_method', label: '支払方法' }
-        ]
-      }
-    ];
-
     function getStripe(type) {
       if (type.includes('収入') || type.toUpperCase().includes('INCOME')) return 'income';
-      if (type.includes('For Two') || type.includes('経費'))             return 'work';
+      if (type.includes('For Two')) return 'work';
       return 'private';
     }
 
-    // ── Toast ──────────────────────────────────────────────
-    function Toast({ msg }) {
-      return msg ? <div className="toast">{msg}</div> : null;
+    /* ────────────────────────────────────────────
+       ★ TagGroup をトップレベルに定義（これが修正の核心）
+       SettingsModal の内側に書くと再レンダリングのたびに
+       コンポーネントが再生成されてフォーカスが失われ
+       1文字しか入力できなくなる
+    ──────────────────────────────────────────── */
+    function TagGroup({ label, colKey, tags, inputVal, setInput, onAdd, onDelete, busy }) {
+      return (
+        <div className="settings-group">
+          <div className="settings-group-label">{label}</div>
+          <div className="tag-list">
+            {tags.length === 0 && (
+              <span style={{fontSize:12, color:'var(--text-muted)'}}>まだタグがありません</span>
+            )}
+            {tags.map(tag => (
+              <span key={tag} className="tag-chip">
+                {tag}
+                <button
+                  className="tag-chip-del"
+                  onClick={() => onDelete(colKey, tag)}
+                  disabled={busy}
+                  title="削除"
+                >×</button>
+              </span>
+            ))}
+          </div>
+          <div className="tag-add-row">
+            <input
+              className="tag-add-input"
+              type="text"
+              placeholder="新しいタグを入力"
+              value={inputVal}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter') onAdd(colKey, inputVal, setInput); }}
+              disabled={busy}
+            />
+            <button
+              className="tag-add-submit"
+              onClick={() => onAdd(colKey, inputVal, setInput)}
+              disabled={busy || !inputVal.trim()}
+            >追加</button>
+          </div>
+        </div>
+      );
     }
 
-    // ── Settings Modal ─────────────────────────────────────
-    function SettingsModal({ settings, onClose, onSave }) {
-      const [localSettings, setLocalSettings] = useState(() => JSON.parse(JSON.stringify(settings)));
-      const [activeSection, setActiveSection] = useState('home');
-      const [addInputs, setAddInputs] = useState({});
-      const [saving, setSaving] = useState(false);
+    /* ────────────────────────────────────────────
+       設定モーダル
+    ──────────────────────────────────────────── */
+    function SettingsModal({ settings, onClose, onSettingsUpdated }) {
+      const [activeType,  setActiveType]  = useState(TYPES[0]);
+      const [catInput,    setCatInput]    = useState('');
+      const [methodInput, setMethodInput] = useState('');
+      const [busy,        setBusy]        = useState(false);
 
-      const section = SETTINGS_SECTIONS.find(s => s.key === activeSection);
+      const cfg = TYPE_CONFIG[activeType];
 
-      const removeTag = (colId, idx) => {
-        setLocalSettings(prev => {
-          const next = { ...prev };
-          next[colId] = [...(prev[colId] || [])];
-          next[colId].splice(idx, 1);
-          return next;
-        });
+      const handleAddTag = (colKey, value, clearFn) => {
+        const trimmed = value.trim();
+        if (!trimmed || busy) return;
+        setBusy(true);
+        google.script.run
+          .withSuccessHandler(updated => {
+            onSettingsUpdated(updated);
+            clearFn('');
+            setBusy(false);
+          })
+          .withFailureHandler(err => {
+            alert('保存失敗: ' + (err.message || err));
+            setBusy(false);
+          })
+          .saveTag(colKey, trimmed);
       };
 
-      const addTag = (colId) => {
-        const val = (addInputs[colId] || '').trim();
-        if (!val) return;
-        setLocalSettings(prev => {
-          const next = { ...prev };
-          next[colId] = [...(prev[colId] || []), val];
-          return next;
-        });
-        setAddInputs(prev => ({ ...prev, [colId]: '' }));
-      };
-
-      const handleSave = () => {
-        setSaving(true);
-        onSave(localSettings);
+      const handleDeleteTag = (colKey, tagValue) => {
+        if (!confirm(`「${tagValue}」を削除しますか？`)) return;
+        setBusy(true);
+        google.script.run
+          .withSuccessHandler(updated => {
+            onSettingsUpdated(updated);
+            setBusy(false);
+          })
+          .withFailureHandler(err => {
+            alert('削除失敗: ' + (err.message || err));
+            setBusy(false);
+          })
+          .deleteTag(colKey, tagValue);
       };
 
       return (
-        <>
-          <div className="modal-backdrop" onClick={onClose} />
+        <div className="modal-backdrop" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
           <div className="modal-sheet">
-            <div className="modal-handle" />
             <div className="modal-header">
-              <div className="modal-title">⚙ 設定 — タグ編集</div>
+              <span className="modal-title">⚙ タグ設定</span>
               <button className="modal-close" onClick={onClose}>✕</button>
             </div>
-
             <div className="modal-body">
-              {/* freee note */}
-              <div className="freee-note">
-                <span className="freee-note-icon">💡</span>
-                <span><b>freee連携：</b>「For Two」の支払方法をfreeeの口座名と合わせると CSV連携がスムーズです</span>
-              </div>
-
-              {/* section tabs */}
-              <div className="settings-seg">
-                {SETTINGS_SECTIONS.map(s => (
+              <div className="settings-type-tabs">
+                {TYPES.map(t => (
                   <button
-                    key={s.key}
-                    className={`settings-seg-btn ${activeSection === s.key ? 'active' : ''}`}
-                    onClick={() => setActiveSection(s.key)}
+                    key={t}
+                    className={`settings-type-tab ${activeType === t ? TYPE_CONFIG[t].tabClass : ''}`}
+                    onClick={() => { setActiveType(t); setCatInput(''); setMethodInput(''); }}
                   >
-                    {s.label}
+                    {TYPE_CONFIG[t].label}
                   </button>
                 ))}
               </div>
 
-              {section.items.map(col => (
-                <div key={col.id} style={{ marginBottom: 20 }}>
-                  <div className="settings-group-label">{section.label} — {col.label}</div>
-                  <div className="settings-tag-list">
-                    {(localSettings[col.id] || []).map((tag, i) => (
-                      <div key={i} className="settings-tag">
-                        <span>{tag}</span>
-                        <button className="settings-tag-del" onClick={() => removeTag(col.id, i)}>×</button>
-                      </div>
-                    ))}
-                    {(localSettings[col.id] || []).length === 0 && (
-                      <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>タグがありません</span>
-                    )}
-                  </div>
-                  <div className="settings-add-row">
-                    <input
-                      type="text"
-                      className="settings-add-input"
-                      placeholder={`新しい${col.label}を追加…`}
-                      value={addInputs[col.id] || ''}
-                      onChange={e => setAddInputs(prev => ({ ...prev, [col.id]: e.target.value }))}
-                      onKeyDown={e => e.key === 'Enter' && addTag(col.id)}
-                    />
-                    <button className="settings-add-btn" onClick={() => addTag(col.id)}>追加</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="modal-footer">
-              <button
-                className="save-settings-btn"
-                onClick={handleSave}
-                disabled={saving}
-              >
-                {saving ? 'Saving…' : '設定を保存する（スプレッドシートに反映）'}
-              </button>
+              <TagGroup
+                label="カテゴリ"
+                colKey={cfg.catKey}
+                tags={settings[cfg.catKey] || []}
+                inputVal={catInput}
+                setInput={setCatInput}
+                onAdd={handleAddTag}
+                onDelete={handleDeleteTag}
+                busy={busy}
+              />
+              <hr className="settings-divider" />
+              <TagGroup
+                label="支払方法"
+                colKey={cfg.methodKey}
+                tags={settings[cfg.methodKey] || []}
+                inputVal={methodInput}
+                setInput={setMethodInput}
+                onAdd={handleAddTag}
+                onDelete={handleDeleteTag}
+                busy={busy}
+              />
             </div>
           </div>
-        </>
+        </div>
       );
     }
 
-    // ── Main App ───────────────────────────────────────────
+    /* ────────────────────────────────────────────
+       メインアプリ
+    ──────────────────────────────────────────── */
     function App() {
-      const [loading,       setLoading]       = useState(true);
-      const [data,          setData]          = useState({
-        monthly: { income:0, expense:0, balance:0, workExpense:0, privateExpense:0 },
-        history: [], settings: {}, currentMonth: ''
-      });
-      const [month,         setMonth]         = useState(new Date().toISOString().slice(0, 7));
-      const [activeTab,     setActiveTab]     = useState('history');
-      const [filter,        setFilter]        = useState('all');
-      const [showSettings,  setShowSettings]  = useState(false);
-      const [toast,         setToast]         = useState('');
+      const [loading,      setLoading]      = useState(true);
+      const [data,         setData]         = useState({ monthly: { income:0, expense:0, balance:0, workExpense:0, privateExpense:0 }, history:[], settings:{}, currentMonth:'' });
+      const [month,        setMonth]        = useState(new Date().toISOString().slice(0, 7));
+      const [activeTab,    setActiveTab]    = useState('history');
+      const [showSettings, setShowSettings] = useState(false);
 
       const emptyForm = (settings, type) => {
         const cfg = TYPE_CONFIG[type] || TYPE_CONFIG[TYPES[0]];
         const s   = settings || {};
         return {
-          date: getToday(), type,
-          category: (s[cfg.catKey]    || [''])[0] || '',
-          method:   (s[cfg.methodKey] || [''])[0] || '',
-          item: '', amount: '', editingRow: null
+          date:       TODAY,
+          type,
+          category:   (s[cfg.catKey]    || [''])[0],
+          method:     (s[cfg.methodKey] || [''])[0],
+          item:       '',
+          amount:     '',
+          editingRow: null
         };
       };
       const [form, setForm] = useState(emptyForm({}, TYPES[0]));
 
-      // toast helper
-      const showToast = (msg) => {
-        setToast(msg);
-        setTimeout(() => setToast(''), 2200);
-      };
-
       useEffect(() => { load(month); }, [month]);
-
-      // 日付が変わったら自動で当月に切り替え（1分ごとにチェック）
-      useEffect(() => {
-        const checkDate = () => {
-          const current = new Date().toISOString().slice(0, 7);
-          setMonth(prev => prev !== current ? current : prev);
-        };
-        const timer = setInterval(checkDate, 60 * 1000);
-        return () => clearInterval(timer);
-      }, []);
 
       const load = (m) => {
         setLoading(true);
-        google.script.run
-          .withSuccessHandler(res => { setData(res); setLoading(false); })
-          .withFailureHandler(err => { alert('読み込みエラー: ' + err.message); setLoading(false); })
-          .getReportData(m);
+        google.script.run.withSuccessHandler(res => {
+          setData(res);
+          setLoading(false);
+        }).getReportData(m);
       };
 
-      const changeType  = (type) => setForm(f => ({ ...emptyForm(data.settings, type), date: f.date }));
+      const changeType = (type) => setForm(f => ({ ...emptyForm(data.settings, type), date: f.date }));
+
       const changeMonth = (delta) => {
         const d = new Date(month + '-01');
         d.setMonth(d.getMonth() + delta);
         setMonth(d.toISOString().slice(0, 7));
       };
 
-      // ── numpad logic ────────────────────────────────────
-      const handleNumpad = (val) => {
-        if (val === 'DEL') {
-          setForm(f => ({ ...f, amount: f.amount.slice(0, -1) }));
-        } else if (val === 'C') {
-          setForm(f => ({ ...f, amount: '' }));
-        } else if (val === '=') {
-          try {
-            const clean = String(form.amount).replace(/[^0-9+\-*/.]/g, '');
-            if (!clean) return;
-            setForm(f => ({ ...f, amount: Math.floor(eval(clean)).toString() }));
-          } catch { showToast('計算エラー'); }
-        } else {
-          setForm(f => ({ ...f, amount: f.amount + val }));
-        }
+      const runCalc = () => {
+        try {
+          const clean = String(form.amount).replace(/[^0-9+\-*/.]/g, '');
+          if (!clean) return;
+          setForm(f => ({ ...f, amount: Math.floor(eval(clean)).toString() }));
+        } catch { alert('計算エラー'); }
       };
 
-      // ── form submit ─────────────────────────────────────
       const handleSubmit = () => {
-        if (!form.item.trim() || !form.amount) { showToast('内容と金額を入力してください'); return; }
+        if (!form.item || !form.amount) return;
         setLoading(true);
-        const done = () => { load(month); setActiveTab('history'); showToast('保存しました ✓'); };
         if (form.editingRow) {
-          google.script.run.withSuccessHandler(done).withFailureHandler(e => { alert(e.message); setLoading(false); }).updateRow(form.editingRow, form);
+          google.script.run
+            .withSuccessHandler(() => { load(month); setActiveTab('history'); })
+            .updateRow(form.editingRow, form);
         } else {
-          google.script.run.withSuccessHandler(done).withFailureHandler(e => { alert(e.message); setLoading(false); }).processForm(form);
+          google.script.run
+            .withSuccessHandler(() => { load(month); setActiveTab('history'); })
+            .processForm(form);
         }
       };
 
@@ -1005,30 +694,22 @@
         setActiveTab('history');
       };
 
-      // ── settings save ────────────────────────────────────
-      const handleSettingsSave = (newSettings) => {
-        setLoading(true);
-        google.script.run
-          .withSuccessHandler(() => {
-            load(month);
-            setShowSettings(false);
-            showToast('設定を保存しました ✓');
-          })
-          .withFailureHandler(e => { alert('保存エラー: ' + e.message); setLoading(false); })
-          .saveSettings(newSettings);
+      const handleSettingsUpdated = (updatedSettings) => {
+        setData(prev => ({ ...prev, settings: updatedSettings }));
+        setForm(f => {
+          const cfg     = TYPE_CONFIG[f.type];
+          const cats    = updatedSettings[cfg.catKey]    || [];
+          const methods = updatedSettings[cfg.methodKey] || [];
+          return {
+            ...f,
+            category: cats.includes(f.category)   ? f.category : (cats[0]    || ''),
+            method:   methods.includes(f.method)   ? f.method   : (methods[0] || ''),
+          };
+        });
       };
 
-      // ── filter & group history ───────────────────────────
-      const filteredHistory = data.history.filter(item => {
-        if (filter === 'all')     return true;
-        if (filter === 'income')  return getStripe(item.type) === 'income';
-        if (filter === 'work')    return getStripe(item.type) === 'work';
-        if (filter === 'private') return getStripe(item.type) === 'private';
-        return true;
-      });
-
-      const grouped = filteredHistory.reduce((acc, item) => {
-        if (!acc[item.fullDate]) acc[item.fullDate] = { date: item.date, weekday: item.weekday, items: [], spent: 0 };
+      const grouped = data.history.reduce((acc, item) => {
+        if (!acc[item.fullDate]) acc[item.fullDate] = { date: item.date, items: [], spent: 0 };
         acc[item.fullDate].items.push(item);
         if (!item.type.includes('収入') && !item.type.toUpperCase().includes('INCOME')) {
           acc[item.fullDate].spent += item.amount;
@@ -1038,35 +719,16 @@
       const sortedDates = Object.keys(grouped).sort((a, b) => new Date(b) - new Date(a));
 
       const [yr, mo] = month.split('-');
-      const bal      = data.monthly.balance;
-      const cfg      = TYPE_CONFIG[form.type] || TYPE_CONFIG[TYPES[0]];
-
-      // numpad rows
-      const numpadRows = [
-        ['7','8','9','÷'],
-        ['4','5','6','×'],
-        ['1','2','3','−'],
-        ['0','00','.', '+'],
-        ['C', '=']
-      ];
-      const numpadOps  = { '÷': '/', '×': '*', '−': '-', '+': '+' };
-      const numpadKeys = [
-        {d:'7',v:'7'},{d:'8',v:'8'},{d:'9',v:'9'},{d:'÷',v:'/',cls:'np-op'},
-        {d:'4',v:'4'},{d:'5',v:'5'},{d:'6',v:'6'},{d:'×',v:'*',cls:'np-op'},
-        {d:'1',v:'1'},{d:'2',v:'2'},{d:'3',v:'3'},{d:'−',v:'-',cls:'np-op'},
-        {d:'0',v:'0'},{d:'00',v:'00'},{d:'⌫',v:'DEL',cls:'np-del'},{d:'+',v:'+',cls:'np-op'},
-        {d:'C',v:'C',cls:'np-op',span:2},{d:'=',v:'=',cls:'np-eq',span:2}
-      ];
+      const bal = data.monthly.balance;
 
       return (
         <div className="app">
+
           {/* Header */}
           <div className="header">
-            <div className="header-top">
+            <div className="header-title-row">
               <div className="header-title">For Two — 家計簿</div>
-              <button className="settings-btn" onClick={() => setShowSettings(true)} title="設定">
-                ⚙
-              </button>
+              <button className="gear-btn" onClick={() => setShowSettings(true)} title="タグ設定">⚙</button>
             </div>
             <div className="month-nav">
               <button className="month-nav-btn" onClick={() => changeMonth(-1)}>◂</button>
@@ -1078,14 +740,12 @@
           {/* Summary */}
           <div className="summary-section">
             <div className={`balance-card ${bal < 0 ? 'negative' : ''}`}>
-              <div className="balance-inner">
-                <div className="balance-left">
-                  <div className="balance-label">Monthly Balance</div>
-                  <div className="balance-amount">¥{fmt(Math.abs(bal))}</div>
-                  <div className="balance-status">{bal >= 0 ? '黒字' : '赤字'} — {yr}/{mo}</div>
-                </div>
-                <div className="balance-badge">{bal >= 0 ? '+' : '−'}¥{fmt(Math.abs(bal))}</div>
+              <div>
+                <div className="balance-label">Balance</div>
+                <div className="balance-amount">¥{fmt(Math.abs(bal))}</div>
+                <div className="balance-sub">{bal >= 0 ? '黒字' : '赤字'}</div>
               </div>
+              <div className="balance-pill">{bal >= 0 ? '+' : '−'}{fmt(Math.abs(bal))}</div>
             </div>
             <div className="sub-cards">
               <div className="sub-card income">
@@ -1103,155 +763,93 @@
             </div>
           </div>
 
-          {/* Tab Nav */}
+          {/* Tab Navigation */}
           <div className="tab-nav">
             <button className={`tab-btn ${activeTab === 'history' ? 'active' : ''}`}
               onClick={() => { setActiveTab('history'); if (form.editingRow) cancelEdit(); }}>
               履歴
-              {data.history.length > 0 && <span className="tab-badge">{data.history.length}</span>}
             </button>
             <button className={`tab-btn ${activeTab === 'entry' ? 'active' : ''}`}
               onClick={() => setActiveTab('entry')}>
-              {form.editingRow ? '✏ 編集中' : '＋ 入力'}
+              {form.editingRow ? '編集中' : '入力'}
             </button>
           </div>
 
-          {/* ── Entry Form ─────────────────────────────── */}
+          {/* Entry Form */}
           {activeTab === 'entry' && (
             <div className="form-section">
               <div className="form-card">
-                {/* type tabs */}
                 <div className="type-tabs">
                   {TYPES.map(t => {
-                    const c = TYPE_CONFIG[t];
+                    const cfg = TYPE_CONFIG[t];
                     return (
-                      <button key={t}
-                        className={`type-tab ${form.type === t ? c.tabClass : ''}`}
-                        onClick={() => changeType(t)}>
-                        <span className="type-tab-icon">{c.icon}</span>
-                        {c.label}
+                      <button key={t} className={`type-tab ${form.type === t ? cfg.tabClass : ''}`} onClick={() => changeType(t)}>
+                        {cfg.label}
                       </button>
                     );
                   })}
                 </div>
-
                 <div className="form-body">
-                  {/* date — カスタムセレクター（iOS中央ズレ回避） */}
                   <div className="form-row">
                     <label>日付</label>
-                    <div className="date-selectors">
-                      {/* 年 */}
-                      <select className="date-select"
-                        value={form.date.split('-')[0]}
-                        onChange={e => {
-                          const [, m, d] = form.date.split('-');
-                          setForm(f => ({ ...f, date: `${e.target.value}-${m}-${d}` }));
-                        }}>
-                        {Array.from({length: 5}, (_, i) => new Date().getFullYear() - 2 + i).map(y => (
-                          <option key={y} value={y}>{y}年</option>
-                        ))}
-                      </select>
-                      {/* 月 */}
-                      <select className="date-select"
-                        value={form.date.split('-')[1]}
-                        onChange={e => {
-                          const [y, , d] = form.date.split('-');
-                          const mo = e.target.value.padStart(2,'0');
-                          setForm(f => ({ ...f, date: `${y}-${mo}-${d}` }));
-                        }}>
-                        {Array.from({length:12}, (_,i) => i+1).map(m => (
-                          <option key={m} value={String(m).padStart(2,'0')}>{m}月</option>
-                        ))}
-                      </select>
-                      {/* 日 */}
-                      <select className="date-select"
-                        value={form.date.split('-')[2]}
-                        onChange={e => {
-                          const [y, m] = form.date.split('-');
-                          const day = e.target.value.padStart(2,'0');
-                          setForm(f => ({ ...f, date: `${y}-${m}-${day}` }));
-                        }}>
-                        {Array.from({length: new Date(Number(form.date.split('-')[0]), Number(form.date.split('-')[1]), 0).getDate()}, (_,i) => i+1).map(d => (
-                          <option key={d} value={String(d).padStart(2,'0')}>{d}日</option>
-                        ))}
-                      </select>
-                    </div>
+                    <input type="date" className="form-input" value={form.date}
+                      onChange={e => setForm(f => ({...f, date: e.target.value}))} />
                   </div>
-
-                  {/* item */}
                   <div className="form-row">
                     <label>内容</label>
-                    <input type="text" className="form-input"
-                      placeholder="例：スーパー、ガソリン代…"
-                      value={form.item}
-                      onChange={e => setForm(f => ({ ...f, item: e.target.value }))} />
+                    <input type="text" className="form-input" placeholder="例：スーパー、ガソリン代…"
+                      value={form.item} onChange={e => setForm(f => ({...f, item: e.target.value}))} />
                   </div>
-
-                  {/* category chips */}
-                  <div className="form-row">
-                    <label>カテゴリ</label>
-                    <div className="tag-row">
-                      {(data.settings[cfg.catKey] || []).map(c => (
-                        <button key={c}
-                          className={`tag-chip ${form.category === c ? `selected-${cfg.stripe}` : ''}`}
-                          onClick={() => setForm(f => ({ ...f, category: c }))}>
-                          {c}
-                        </button>
-                      ))}
-                      {(data.settings[cfg.catKey] || []).length === 0 && (
-                        <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>設定からカテゴリを追加してください</span>
-                      )}
+                  <div className="form-grid form-row">
+                    <div>
+                      <label>カテゴリ</label>
+                      <div className="form-select-wrap">
+                        <select className="form-select" value={form.category}
+                          onChange={e => setForm(f => ({...f, category: e.target.value}))}>
+                          {(data.settings[TYPE_CONFIG[form.type]?.catKey] || []).map(c =>
+                            <option key={c} value={c}>{c}</option>
+                          )}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label>支払方法</label>
+                      <div className="form-select-wrap">
+                        <select className="form-select" value={form.method}
+                          onChange={e => setForm(f => ({...f, method: e.target.value}))}>
+                          {(data.settings[TYPE_CONFIG[form.type]?.methodKey] || []).map(m =>
+                            <option key={m} value={m}>{m}</option>
+                          )}
+                        </select>
+                      </div>
                     </div>
                   </div>
 
-                  {/* method chips */}
-                  <div className="form-row">
-                    <label>支払方法</label>
-                    <div className="tag-row">
-                      {(data.settings[cfg.methodKey] || []).map(m => (
-                        <button key={m}
-                          className={`tag-chip ${form.method === m ? `selected-${cfg.stripe}` : ''}`}
-                          onClick={() => setForm(f => ({ ...f, method: m }))}>
-                          {m}
-                        </button>
-                      ))}
-                      {(data.settings[cfg.methodKey] || []).length === 0 && (
-                        <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>設定から支払方法を追加してください</span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* amount + numpad */}
                   <div className="amount-area">
                     <div className="amount-display">
                       <span className="amount-currency">¥</span>
-                      <input
-                        type="text"
-                        className="amount-input"
-                        placeholder="0"
-                        inputMode="none"
+                      <input type="text" className="amount-input" placeholder="0"
                         value={form.amount}
-                        onChange={e => setForm(f => ({ ...f, amount: e.target.value }))}
-                      />
+                        onChange={e => setForm(f => ({...f, amount: e.target.value}))} />
                     </div>
-                    <div className="numpad">
-                      {numpadKeys.map((k, i) => (
-                        <button
-                          key={i}
-                          className={`np-btn ${k.cls || ''}`}
-                          style={k.span ? { gridColumn: `span ${k.span}` } : {}}
-                          onClick={() => handleNumpad(k.v)}
-                        >
-                          {k.d}
-                        </button>
-                      ))}
+                    <div className="calc-row">
+                      {['+', '−', '×', '÷', 'C', '='].map((op, i) => {
+                        const ops = ['+', '-', '*', '/', '', '='];
+                        return (
+                          <button key={op} className={`calc-btn ${op === '=' ? 'calc-eq' : ''}`}
+                            onClick={() => {
+                              if (op === 'C') setForm(f => ({...f, amount: ''}));
+                              else if (op === '=') runCalc();
+                              else setForm(f => ({...f, amount: f.amount + ops[i]}));
+                            }}>
+                            {op}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
-                  <button
-                    className={`save-btn ${form.editingRow ? 'editing' : cfg.btnClass}`}
-                    onClick={handleSubmit}
-                  >
+                  <button className={`save-btn ${form.editingRow ? 'editing' : ''}`} onClick={handleSubmit}>
                     {form.editingRow ? '更新する' : '保存する'}
                   </button>
                   {form.editingRow && (
@@ -1262,89 +860,52 @@
             </div>
           )}
 
-          {/* ── History ────────────────────────────────── */}
+          {/* History */}
           {activeTab === 'history' && (
-            <>
-              {/* filter bar */}
-              <div className="filter-bar">
-                {[
-                  { id: 'all',     label: 'すべて',   cls: 'active-all' },
-                  { id: 'income',  label: '収入',     cls: 'active-income' },
-                  { id: 'work',    label: 'For Two',  cls: 'active-work' },
-                  { id: 'private', label: 'Private',  cls: 'active-private' }
-                ].map(f => (
-                  <button key={f.id}
-                    className={`filter-chip ${filter === f.id ? f.cls : ''}`}
-                    onClick={() => setFilter(f.id)}>
-                    {f.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="history-section">
-                {sortedDates.length === 0 ? (
-                  <div className="empty-state">
-                    <div className="empty-state-icon">📋</div>
-                    <p>この月のデータはありません</p>
-                  </div>
-                ) : sortedDates.map(dateKey => {
-                  const group   = grouped[dateKey];
-                  const weekday = group.weekday;
-                  const isSat   = weekday === '土';
-                  const isSun   = weekday === '日';
-                  return (
-                    <div key={dateKey} className="date-group">
-                      <div className="date-header">
-                        <div className="date-header-left">
-                          <span className="date-header-day">{group.date}</span>
-                          <span className={`date-weekday ${isSat ? 'sat' : isSun ? 'sun' : ''}`}>{weekday}</span>
-                        </div>
-                        {group.spent > 0 && <span className="date-header-total">¥{fmt(group.spent)}</span>}
-                      </div>
-
-                      {group.items.map((item, idx) => {
-                        const stripe   = getStripe(item.type);
-                        const isIncome = stripe === 'income';
-                        return (
-                          <div key={idx} className="tx-item" onClick={() => startEdit(item)}>
-                            <div className={`tx-stripe ${stripe}`} />
-                            <div className="tx-body">
-                              <div className="tx-top">
-                                <span className={`tx-badge ${stripe}`}>{TYPE_CONFIG[item.type]?.label || item.type}</span>
-                                {item.cat && <span className="tx-cat">{item.cat}</span>}
-                              </div>
-                              <div className="tx-name">{item.item}</div>
-                              {item.method && <div className="tx-method">{item.method}</div>}
-                            </div>
-                            <div className="tx-right">
-                              <div className={`tx-amount ${isIncome ? 'income' : 'expense'}`}>
-                                {isIncome ? '+' : ''}¥{fmt(item.amount)}
-                              </div>
-                              <button className="tx-delete" onClick={e => {
-                                e.stopPropagation();
-                                if (confirm('この記録を削除しますか？')) {
-                                  setLoading(true);
-                                  google.script.run
-                                    .withSuccessHandler(() => { load(month); showToast('削除しました'); })
-                                    .deleteRow(item.row);
-                                }
-                              }}>×</button>
-                            </div>
-                          </div>
-                        );
-                      })}
+            <div className="history-section" style={{paddingTop: 12}}>
+              {sortedDates.length === 0 ? (
+                <div className="empty-state">
+                  <div style={{fontSize: 32}}>📋</div>
+                  <p>この月のデータはありません</p>
+                </div>
+              ) : sortedDates.map(dateKey => {
+                const group = grouped[dateKey];
+                return (
+                  <div key={dateKey} className="date-group">
+                    <div className="date-header">
+                      <span className="date-header-label">{group.date}</span>
+                      {group.spent > 0 && <span className="date-header-total">支出 ¥{fmt(group.spent)}</span>}
                     </div>
-                  );
-                })}
-              </div>
-            </>
-          )}
-
-          {/* Loading */}
-          {loading && (
-            <div className="loading-overlay">
-              <div className="spinner" />
-              <div className="loading-text">Syncing…</div>
+                    {group.items.map((item, idx) => {
+                      const stripe   = getStripe(item.type);
+                      const isIncome = stripe === 'income';
+                      return (
+                        <div key={idx} className="tx-item" onClick={() => startEdit(item)}>
+                          <div className={`tx-stripe ${stripe}`}></div>
+                          <div className="tx-body">
+                            <div className="tx-meta">{item.cat}{item.method ? ` · ${item.method}` : ''}</div>
+                            <div className="tx-name">{item.item}</div>
+                          </div>
+                          <div className="tx-right">
+                            <div className={`tx-amount ${isIncome ? 'income' : 'expense'}`}>
+                              {isIncome ? '+' : ''}¥{fmt(item.amount)}
+                            </div>
+                            <button className="tx-delete" onClick={e => {
+                              e.stopPropagation();
+                              if (confirm('削除しますか？')) {
+                                setLoading(true);
+                                google.script.run
+                                  .withSuccessHandler(() => load(month))
+                                  .deleteRow(item.row);
+                              }
+                            }}>×</button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
           )}
 
@@ -1353,12 +914,18 @@
             <SettingsModal
               settings={data.settings}
               onClose={() => setShowSettings(false)}
-              onSave={handleSettingsSave}
+              onSettingsUpdated={handleSettingsUpdated}
             />
           )}
 
-          {/* Toast */}
-          <Toast msg={toast} />
+          {/* Loading Overlay */}
+          {loading && (
+            <div className="loading-overlay">
+              <div className="spinner"></div>
+              <div className="loading-text">Syncing...</div>
+            </div>
+          )}
+
         </div>
       );
     }
